@@ -19,7 +19,16 @@ export default {
 		'sighting': Sighting
 	},
 	mounted(){
-    this.fetchData();
+	this.fetchData();
+	
+	eventBus.$on('bird-added', (bird) => {
+      this.sightings.push(bird)
+    })
+
+	eventBus.$on('sighting-deleted', (id) => {
+		let index = this.sightings.findIndex(sighting => sighting._id === id)
+		this.sightings.splice(index, 1)
+	})
   },
   methods: {
     fetchData(){

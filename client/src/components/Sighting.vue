@@ -9,8 +9,8 @@
 
 <script>
 
-import { eventBus } from '@/main.js'
-import SightingService from '@/services/SightingServices.js'
+import { eventBus } from '../main';
+import SightingService from '../services/SightingService.js';
 
 export default {
   name: "sighting",
@@ -23,7 +23,7 @@ export default {
   methods: {
     deleteSighting (){
       SightingService.deleteSighting(this.sighting._id)
-      .then(() => eventBus.$emit())
+      .then(() => eventBus.$emit('sighting-deleted', this.sighting._id))
     }
     
   }
