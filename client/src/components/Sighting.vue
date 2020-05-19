@@ -3,7 +3,7 @@
     <h2>{{ sighting.species }}</h2>
     <p>{{ sighting.location }} on {{ sighting.date|format }}</p>
 
-    <button type="button" class="delete-btn" v-on:click="deleteSighting">Delete Sighting</button>
+    <button type="button" class="delete-btn" v-on:click="deleteBird">Delete Sighting</button>
   </div>
 </template>
 
@@ -21,8 +21,8 @@ export default {
     }
   },
   methods: {
-    deleteSighting (){
-      SightingService.deleteSighting(this.sighting._id)
+    deleteBird (){
+      SightingService.deleteBird(this.sighting._id)
       .then(() => eventBus.$emit('sighting-deleted', this.sighting._id))
     }
     
